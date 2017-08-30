@@ -1,7 +1,8 @@
-FROM alpine:latest
+FROM alpine:3.6
 
+ADD conf /app
 ADD nutcracker /app
-ADD conf /app/conf
+
 
 EXPOSE 6379
 CMD ["/app/nutcracker"]

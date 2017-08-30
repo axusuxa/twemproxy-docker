@@ -1,0 +1,67 @@
+version: "3.2"
+
+networks:
+  redisnet:
+
+services:
+  twemproxy:
+    image: axus/twemproxy:latest
+    networks:
+      - redisnet
+    ports:
+      - "6379:6379"
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 256M
+        reservations:
+          cpus: '0.50'
+          memory: 64M
+
+  redis1:
+    image: redis:4-alpine
+    networks:
+      - redisnet
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 256M
+        reservations:
+          cpus: '0.50'
+          memory: 64M
+
+  redis2:
+    image: redis:4-alpine
+    networks:
+      - redisnet
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 256M
+        reservations:
+          cpus: '0.50'
+          memory: 64M
+
+  redis3:
+    image: redis:4-alpine
+    networks:
+      - redisnet
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 256M
+        reservations:
+          cpus: '0.50'
+          memory: 64M
